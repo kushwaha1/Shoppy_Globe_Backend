@@ -1,0 +1,26 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "2903e26c-94f2-4dde-a2e9-043140971c99",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1763021020732"
+        }
+      },
+      "favorite": {
+        "name": "shoppyglobe"
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/shoppyglobe",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjoxLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}

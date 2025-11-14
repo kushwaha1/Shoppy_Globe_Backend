@@ -1,6 +1,7 @@
-import { connectDB } from "../config/db.js";
-import Product from "../models/Product.js";
+import { connectDB } from "../config/db.js"; // DB connection function
+import Product from "../models/Product.js";  // Product model
 
+// Array of sample products to seed
 const products = [
   { name: "Wireless Bluetooth Headphones", price: 1299, description: "Over-ear, noise-isolating headphones with 20hr battery.", stock: 45 },
   { name: "USB-C Fast Charger 30W", price: 799, description: "Compact PD charger for phones and tablets.", stock: 120 },
@@ -34,27 +35,30 @@ const products = [
   { name: "Wireless HDMI Display Adapter", price: 2999, description: "Mirror smartphone/laptop to TV.", stock: 38 }
 ];
 
+// Function to seed products into DB
 const seedProducts = async () => {
   try {
-    await connectDB();
+    await connectDB(); // Connect to MongoDB
     console.log("MongoDB Connected");
 
     // Optional: clear old products
     // await Product.deleteMany({});
 
-    const count = await Product.countDocuments();
+    const count = await Product.countDocuments(); // Check if products already exist
     if (count > 0) {
       console.log("Products already exist. Skipping insert.");
-      process.exit(0);
+      process.exit(0); // Exit if products exist
     }
 
+    // Insert all products
     const result = await Product.insertMany(products);
     console.log(`${result.length} products inserted successfully.`);
   } catch (error) {
-    console.error("Error inserting products:", error.message);
+    console.error("Error inserting products:", error.message); // Log error
   } finally {
-    process.exit();
+    process.exit(); // Exit process after seeding
   }
 };
 
+// Run the seed function
 seedProducts();
